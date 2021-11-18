@@ -21,10 +21,6 @@ public class LongMapImpl<V> implements LongMap<V> {
         initMap( DEFAULT_CAPACITY );
     }
 
-    public static void main(String[] args) {
-
-    }
-
     @Override
     public V put(long key,V value) {
         int index = countIndexBucket( key );
