@@ -2,6 +2,7 @@ package de.comparus.opensource.longmap;
 
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -126,20 +127,22 @@ public class LongMapImpl<V> implements LongMap<V> {
     }
 
     @Override
-    public long[] keys() {
-        List<Long> keys = new ArrayList<>();
+    public long[] keys() { ;
+        long[] keys = new long[size];
+        int indexKey = 0;
 
         for (int index = 0; index < buckets.length; index++) {
             if ( buckets[index] != null ) {
                 Bucket.Node node = buckets[index].getHeadNode();
 
                 do {
-                    keys.add( node.getKey() );
+                    keys[indexKey] = node.getKey();
+                    indexKey++;
                 } while ((node = node.getNext()) != null);
             }
         }
 
-        return keys.stream().mapToLong( Long::longValue ).toArray();
+        return keys;
     }
 
     @Override
@@ -295,5 +298,13 @@ public class LongMapImpl<V> implements LongMap<V> {
                 return key + "=" + value;
             }
         }
+    }
+
+    public static void main(String[] args) {
+        LongMapImpl<String> arr = new LongMapImpl<>();
+        arr.put( 2,"" );
+        arr.put( 3, "" );
+
+        System.out.println( Arrays.toString(arr.keys()) );
     }
 }
