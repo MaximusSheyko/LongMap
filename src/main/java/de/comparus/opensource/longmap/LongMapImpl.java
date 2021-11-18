@@ -299,12 +299,4 @@ public class LongMapImpl<V> implements LongMap<V> {
             }
         }
     }
-
-    public static void main(String[] args) {
-        LongMapImpl<String> arr = new LongMapImpl<>();
-        arr.put( 2,"" );
-        arr.put( 3, "" );
-
-        System.out.println( Arrays.toString(arr.keys()) );
-    }
 }
