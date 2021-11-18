@@ -230,15 +230,6 @@ public class LongMapImpl<V> implements LongMap<V> {
             tail = node;
         }
 
-        void printList() {
-            Node<V> node = this.head;
-            while (node != null) {
-                System.out.print( node + " " );
-                node = node.getNext();
-            }
-            System.out.println();
-        }
-
         V deleteNode(long key) {
             Node<V> result = null;
 
